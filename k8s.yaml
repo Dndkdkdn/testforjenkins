@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo2
+  namespace: java-web-test1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo2
+  template:
+    metadata:
+      labels:
+        app: demo2
+    spec:
+      containers:
+        - name: demo2
+          image: demo1-1.0-snapshot:v1  #注意，这里的版本和名称要和docker images中的对应
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DEMO1_SERVICE_HOST
+              value: 10.233.3.12
+            - name: DEMO_SERVICE_PORT
+              value: '8080'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo2
+  namespace: java-web-test1
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30018
+  selector:
+    app: demo2
+  type: NodePort

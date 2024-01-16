@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="demo3:war exploded">
+    <output-path>$PROJECT_DIR$/web/WEB-INF/lib</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="demo3/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="demo3" />
+          <element id="library" level="project" name="apache-tomcat-8.5" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="annotations-api" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="web/web/Web" />
+    </root>
+  </artifact>
+</component>
